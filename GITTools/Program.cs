@@ -17,9 +17,9 @@ namespace GITTools
             {
                 if (Directory.Exists(item.FullName))
                 {
-                    if (Directory.Exists(item.FullName+@"\.git"))
+                    if (!Directory.Exists(item.FullName+@"\.git"))
                     {
-                        //Console.WriteLine(item.FullName);
+                        Console.WriteLine(item.FullName);
                     }
                 }   
             }
