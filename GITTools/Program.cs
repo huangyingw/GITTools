@@ -21,18 +21,23 @@ namespace GITTools
                 {
                     if (!Directory.Exists(item.FullName + @"\.git"))
                     {
-                        result = null;
                         Console.WriteLine(item.FullName);
-                        result += CallDos(@"cd " + item.FullName);
-                        result += CallDos("git in");
-                        result += CallDos("exit");
+                        result += CallDos(item.FullName, "git in");
+                        result += CallDos(item.FullName, "git ad ");
+                        result += CallDos(item.FullName, "git ci \"Init\"");
+                        Console.WriteLine(result);
+                    }
+                    else
+                    {
+                        result += CallDos(item.FullName, "git ad .");
+                        result += CallDos(item.FullName, "git ci \"Init\"");
                         Console.WriteLine(result);
                     }
                 }
             }
         }
 
-        static string CallDos(string command)
+        static string CallDos(string path, string command)
         {
             Process p = new Process();
             p.StartInfo.FileName = "cmd.exe";
@@ -41,11 +46,14 @@ namespace GITTools
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.CreateNoWindow = true;
             p.Start();
+            p.StandardInput.WriteLine("cd " + path);
             p.StandardInput.WriteLine(command);
-            p.WaitForExit();
+            p.StandardInput.WriteLine("exit");
+            p.WaitForExit(60000);
             string s = p.StandardOutput.ReadToEnd();
             p.Close();
             return s;
         }
     }
 }
+
