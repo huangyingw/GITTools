@@ -16,8 +16,11 @@ namespace GITTools
             foreach (FileSystemInfo item in sdi.GetFileSystemInfos())
             {
                 if (Directory.Exists(item.FullName))
-                {   
-                    
+                {
+                    if (Directory.Exists(item.FullName+@"\.git"))
+                    {
+                        //Console.WriteLine(item.FullName);
+                    }
                 }   
             }
         }
