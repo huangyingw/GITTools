@@ -9,6 +9,7 @@ namespace GITTools
     {
         static void Main(string[] args)
         {
+            string source=@"E:\temp\source";
         }
     }
 }
