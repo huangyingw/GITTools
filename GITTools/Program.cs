@@ -12,12 +12,15 @@ namespace GITTools
         {
             string source = @"E:\temp\source";
             string target = @"E:\temp\target";
-            FileSystemInfo fsi = null;
+            FileSystemInfo so = null;
             if (File.Exists(source))
-                fsi = new FileInfo(source);
+                so = new FileInfo(source);
             else if (Directory.Exists(source))
-                fsi = new DirectoryInfo(source);
-
+                so = new DirectoryInfo(source);
+            foreach (FileSystemInfo item in so.g)
+            {
+                
+            }
         }
     }
 }
