@@ -18,7 +18,7 @@ namespace GITTools
             {
                 if (Directory.Exists(item.FullName))
                 {
-                    if (!Directory.Exists(item.FullName+@"\.git"))
+                    if (!Directory.Exists(item.FullName + @"\.git"))
                     {
                         Console.WriteLine(item.FullName);
                         Process p = new Process();
@@ -28,7 +28,7 @@ namespace GITTools
                         p.StartInfo.RedirectStandardOutput = true;
                         p.StartInfo.CreateNoWindow = true;
                         p.Start();
-                        p.StandardInput.WriteLine("cd "+item.FullName);
+                        p.StandardInput.WriteLine("cd " + item.FullName);
                         p.StandardInput.WriteLine("git in");
                         p.StandardInput.WriteLine("exit");
                         p.WaitForExit(60000);
@@ -37,7 +37,7 @@ namespace GITTools
                         Console.WriteLine(s);
 
                     }
-                }   
+                }
             }
         }
     }
