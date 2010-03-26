@@ -28,7 +28,7 @@ namespace GITTools
                 }
             }
         }
-        static string CallDos()
+        static string CallDos(string path, string command)
         {
             string result = null;
             Process p = new Process();
