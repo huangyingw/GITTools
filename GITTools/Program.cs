@@ -40,5 +40,10 @@ namespace GITTools
                 }
             }
         }
+        static string CallDos()
+        {
+            string result = null;
+            return result;
+        }
     }
 }
