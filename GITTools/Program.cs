@@ -27,6 +27,18 @@ namespace GITTools
                         Console.WriteLine(CallDos(item.FullName, "git ad ."));
                         Console.WriteLine(CallDos(item.FullName, "git ci \"Init\""));
                     }
+                    else
+                    {
+                        string filepath = item.FullName + @"\.gitignore";
+                        if (!File.Exists(filepath))
+                        {
+                            File.Create(filepath);
+                        }
+                        using (StreamWriter sw = File.AppendText(filepath))
+                        {
+                            sw.WriteLine(string.Format("*.bak"));
+                        }
+                    }
                 }
             }
         }
