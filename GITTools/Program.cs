@@ -22,7 +22,7 @@ namespace GITTools
                     {
                         Console.WriteLine(item.FullName);
                         
-                        Console.WriteLine(s);
+                        //Console.WriteLine(s);
 
                     }
                 }
