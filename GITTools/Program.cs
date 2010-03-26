@@ -21,19 +21,7 @@ namespace GITTools
                     if (!Directory.Exists(item.FullName + @"\.git"))
                     {
                         Console.WriteLine(item.FullName);
-                        Process p = new Process();
-                        p.StartInfo.FileName = "cmd.exe";
-                        p.StartInfo.UseShellExecute = false;
-                        p.StartInfo.RedirectStandardInput = true;
-                        p.StartInfo.RedirectStandardOutput = true;
-                        p.StartInfo.CreateNoWindow = true;
-                        p.Start();
-                        p.StandardInput.WriteLine("cd " + item.FullName);
-                        p.StandardInput.WriteLine("git in");
-                        p.StandardInput.WriteLine("exit");
-                        p.WaitForExit(60000);
-                        string s = p.StandardOutput.ReadToEnd();
-                        p.Close();
+                        
                         Console.WriteLine(s);
 
                     }
@@ -43,6 +31,19 @@ namespace GITTools
         static string CallDos()
         {
             string result = null;
+            Process p = new Process();
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.CreateNoWindow = true;
+            p.Start();
+            p.StandardInput.WriteLine("cd " + item.FullName);
+            p.StandardInput.WriteLine("git in");
+            p.StandardInput.WriteLine("exit");
+            p.WaitForExit(60000);
+            string s = p.StandardOutput.ReadToEnd();
+            p.Close();
             return result;
         }
     }
