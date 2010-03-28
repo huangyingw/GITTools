@@ -11,7 +11,7 @@ namespace GITTools
     {
         static void Main(string[] args)
         {
-            string source = @"C:\source";
+            string source = @"E:\temp\source\tools";
             string target = @"E:\temp\target";
             DirectoryInfo sdi = new DirectoryInfo(source);
             string result = null;
@@ -21,17 +21,23 @@ namespace GITTools
                 {
                     if (!Directory.Exists(item.FullName + @"\.git"))
                     {
+                        result = null;
                         Console.WriteLine(item.FullName);
-                        result += CallDos(item.FullName, "git in");
-                        result += CallDos(item.FullName, "git ad ");
-                        result += CallDos(item.FullName, "git ci \"Init\"");
-                        Console.WriteLine(result);
+                        Console.WriteLine(CallDos(item.FullName, "git in"));
+                        Console.WriteLine(CallDos(item.FullName, "git ad ."));
+                        Console.WriteLine(CallDos(item.FullName, "git ci \"Init\""));
                     }
                     else
                     {
-                        result += CallDos(item.FullName, "git ad .");
-                        result += CallDos(item.FullName, "git ci \"Init\"");
-                        Console.WriteLine(result);
+                        string filepath = item.FullName + @"\.gitignore";
+                        if (!File.Exists(filepath))
+                        {
+                            File.Create(filepath);
+                        }
+                        using (StreamWriter sw = File.AppendText(filepath))
+                        {
+                            sw.WriteLine(string.Format("*.bak"));
+                        }
                     }
                 }
             }
