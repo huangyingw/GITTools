@@ -6,9 +6,15 @@ public class git {
     
     public static void main(String[] args) {
         
-        long a = System.currentTimeMillis();
-        refreshFileList("/media/volgrp/myproject/git/eclipse_workspace/GITTools/");
-        System.out.println(System.currentTimeMillis() - a);
+    	String cmd = "ls -al";
+		Runtime run = Runtime.getRuntime();
+		Process pr = run.exec(cmd);
+		pr.waitFor();
+		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+		String line = "";
+		while ((line=buf.readLine())!=null) {
+			System.out.println(line);
+		}
     }
     public static void refreshFileList(String strPath) { 
         File dir = new File(strPath); 
@@ -28,12 +34,4 @@ public class git {
     }
 
 }
-String cmd = "ls -al";
-		Runtime run = Runtime.getRuntime();
-		Process pr = run.exec(cmd);
-		pr.waitFor();
-		BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-		String line = "";
-		while ((line=buf.readLine())!=null) {
-			System.out.println(line);
-		}
+		
