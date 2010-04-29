@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class git {
 	
 	private static ArrayList filelist = new ArrayList(); 
-  public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
   	String cmd = "ls -al";
 		Runtime run = Runtime.getRuntime();
 		Process pr = run.exec(cmd);
