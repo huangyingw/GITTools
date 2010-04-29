@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class git {
 	public static void main(String[] args) {
-  	String cmd = "ls -al";
+		String command = "ls -al";
 		Runtime run = Runtime.getRuntime();
-		//Process pr = run.exec(cmd);	
+		run.exec(command);	
    }
 }
 		
