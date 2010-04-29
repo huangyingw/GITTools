@@ -7,7 +7,7 @@ public class git {
     public static void main(String[] args) {
         
         long a = System.currentTimeMillis();
-        refreshFileList("c:\\java");
+        refreshFileList("/media/volgrp/myproject/git/eclipse_workspace/GITTools/");
         System.out.println(System.currentTimeMillis() - a);
     }
     public static void refreshFileList(String strPath) { 
